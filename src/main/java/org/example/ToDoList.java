@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -7,14 +8,16 @@ import java.util.Scanner;
 
 public class ToDoList {
     private Scanner scanner = new Scanner(System.in);
-    private List<Task> tasks = new ArrayList<>();
+    static List<Task> tasks = new ArrayList<>();
     private boolean isRunning = true;
 
     public ToDoList() {
         System.out.println("Welcome to the to-do list!");
+        FileOperations.loadTasks();
         while(isRunning) {
             menu();
         }
+        FileOperations.saveTasks();
     }
 
     private void menu() {
