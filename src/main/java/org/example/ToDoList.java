@@ -86,7 +86,11 @@ public class ToDoList {
         System.out.print("Type task to complete: ");
         try {
             int taskToComplete = scanner.nextInt();
-            tasks.get(taskToComplete).setDone(true);
+            if(tasks.get(taskToComplete).isDone()) {
+                System.out.println("The task is already complete. Choose another.");
+            } else {
+                tasks.get(taskToComplete).setDone(true);
+            }
         }  catch (IndexOutOfBoundsException e) {
             System.out.println("The task number is not on the list!");
         } catch (InputMismatchException e) {
